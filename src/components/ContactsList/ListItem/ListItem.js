@@ -1,26 +1,29 @@
 import PropTypes from 'prop-types';
 import css from './ListItem.module.css';
 import { useDispatch } from 'react-redux';
-import { getContactsThunk, deleteContactThunk } from '../../../redux/phonebookThunk';
+import {
+  getContactsThunk,
+  deleteContactThunk,
+} from '../../../redux/phonebookThunk';
 
-export const ListItem = ({ giveContact: { name, number,id } }) => {
+export const ListItem = ({ giveContact: { name, number, id } }) => {
   const dispatch = useDispatch();
 
   return (
     <li>
-      <div>
-        <p>
-          {name}: <span>{number}</span>
-        </p>
+     <p className={css.contactText}>{name}</p>
+      <p className={css.phoneText}>{number}</p>
         <button
-          className={css.listItem__button}
+          className={css.button}
           type="button"
-          onClick={() => {dispatch(deleteContactThunk(id));dispatch(getContactsThunk())}}
+          onClick={() => {
+            dispatch(deleteContactThunk(id));
+            dispatch(getContactsThunk());
+          }}
           key={id}
         >
           Delete
         </button>
-      </div>
     </li>
   );
 };

@@ -1,20 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import { initialState } from './initialState';
+import { initialState } from './phonebookInitialState';
 
 import {
   getContactsThunk,
-  postContactThunk,
+  addNewContactThunk,
   deleteContactThunk,
-} from './phonebookThunk';
+  editContactThunk,
+} from './phonebookThunks';
 
 import {
-  handlerAddContact,
+  handlerGetContacts,
+  handlerAddNewContact,
   handlerDeleteContact,
   handlerPending,
   handlerError,
-  handlerGetContacts,
-} from './sliceHandlers';
+  handlerEditContact,
+} from './phonebookSliceHandlers';
 
 export const phonebookSlice = createSlice({
   name: 'phonebook',
@@ -31,9 +32,12 @@ export const phonebookSlice = createSlice({
       .addCase(getContactsThunk.pending, handlerPending)
       .addCase(getContactsThunk.fulfilled, handlerGetContacts)
       .addCase(getContactsThunk.rejected, handlerError)
-      .addCase(postContactThunk.pending, handlerPending)
-      .addCase(postContactThunk.fulfilled, handlerAddContact)
-      .addCase(postContactThunk.rejected, handlerError)
+      .addCase(addNewContactThunk.pending, handlerPending)
+      .addCase(addNewContactThunk.fulfilled, handlerAddNewContact)
+      .addCase(addNewContactThunk.rejected, handlerError)
+      .addCase(editContactThunk.pending, handlerPending)
+      .addCase(editContactThunk.fulfilled, handlerEditContact)
+      .addCase(editContactThunk.rejected, handlerError)
       .addCase(deleteContactThunk.pending, handlerPending)
       .addCase(deleteContactThunk.fulfilled, handlerDeleteContact)
       .addCase(deleteContactThunk.rejected, handlerError);
@@ -41,5 +45,5 @@ export const phonebookSlice = createSlice({
 });
 
 export const phonebookReducer = phonebookSlice.reducer;
-export const { updateFilter, addContact, deleteContact } =
+export const { updateFilter } =
   phonebookSlice.actions;

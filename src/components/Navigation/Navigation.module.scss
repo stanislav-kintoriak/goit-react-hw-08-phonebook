@@ -1,0 +1,17 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 700px;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+.auth-menu {
+    display: flex;
+    list-style: none;
+}
+

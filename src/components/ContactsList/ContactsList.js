@@ -1,4 +1,4 @@
-import { ListItem } from './ListItem/ListItem';
+import { ListItem } from '../ListItem/ListItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {  filteredContactsSelect } from 'redux/selectors';

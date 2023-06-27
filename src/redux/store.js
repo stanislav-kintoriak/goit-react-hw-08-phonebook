@@ -14,15 +14,13 @@ import {
 export const store = configureStore({
   reducer: {
     phonebook: phonebookReducer,
-    auth: authReducerPersisted
+    auth: authReducerPersisted,
   },
 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        // Ignore these field paths in all actions
         ignoredActionPaths: [
           'payload.headers',
           'payload.config.transformRequest.0',
@@ -34,7 +32,6 @@ export const store = configureStore({
           'payload.request',
           'payload.timestamp',
         ],
-        // Ignore these paths in the state
         ignoredPaths: [],
       },
     }),

@@ -32,7 +32,7 @@ const FormLogin = function () {
   };
 
   return (
-    <form className={css['login-form']} onSubmit={handlerSubmitForm}>
+    <form className={css.login_form} onSubmit={handlerSubmitForm}>
       <Input
         label="E-mail"
         type="email"

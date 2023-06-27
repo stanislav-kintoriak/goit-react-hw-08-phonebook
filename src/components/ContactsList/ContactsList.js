@@ -1,27 +1,43 @@
 import { ListItem } from '../ListItem/ListItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import {  filteredContactsSelect } from 'redux/selectors';
 import { getContactsThunk } from 'redux/phonebookThunk';
+import css from './ContactsList.module.scss';
+import {
+  filteredContactsSelector,
+  isLoadingSelector,
+  errorSelector,
+} from 'redux/phonebook/phonebookSelectors';
+import { getContactsThunk } from 'redux/phonebook/phonebookThunks';
+import ErrorNotification from 'components/ErrorMessage/ErrorMessage';
+import Loader from 'components/Loader/Loader';
 
-import css from './ContactsList.module.css';
+const ContactsList = function () {
+  const filteredContacts = useSelector(filteredContactsSelector);
+  const isLoading = useSelector(isLoadingSelector);
+  const errorMessage = useSelector(errorSelector);
 
-export const ContactList = () => {
-  
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getContactsThunk());
   }, [dispatch]);
 
-  const renderList = useSelector(filteredContactsSelect);
-
   return (
-    <ul className={css.contact__list}>
-      {renderList.map(renderedItem => (
-        <ListItem key={renderedItem.id} giveContact={renderedItem} />
-      ))}
-    </ul>
+    <>
+      {isLoading && <Loader />}
+      {errorMessage ? (
+        <ErrorNotification message={errorNotification} />
+      ) : filteredContacts.length > 0 ? (
+        <ul className={css.contactsList}>
+          {filteredContacts.map(({ id, name, number }) => {
+            return <ListItem key={id} name={name} number={number} id={id} />;
+          })}
+        </ul>
+      ) : (
+        <ErrorNotification message={'There is no any contact'} />
+      )}
+    </>
   );
 };
+
+export default ContactsList;

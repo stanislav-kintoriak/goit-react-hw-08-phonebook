@@ -3,35 +3,83 @@ import css from './ListItem.module.css';
 import { useDispatch } from 'react-redux';
 import {
   getContactsThunk,
+  changeInContactThunk,
   deleteContactThunk,
-} from '../../../redux/phonebookThunk';
+} from '../../redux/phonebook/phonebookThunk';
+import ButtonSmall from '../ButtonSmall/ButtonSmall';
+import { useState } from 'react';
+import { Modal } from '../../components/Modal';
 
-export const ListItem = ({ giveContact: { name, number, id } }) => {
+const ListItem = function ({ name, number, id }) {
+  const [updatedName, setUpdatedName] = useState(name);
+  const [updatedNumber, setUpdatedNumber] = useState(number);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
+  const handlerCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handlerSubmitChangeInForm = event => {
+    event.preventDefault();
+    setIsModalOpen(false);
+
+    const changedContact = {
+      name: updatedName,
+      number: updatedNumber,
+    };
+    dispatch(changeInContactThunk({ id, changedContact }));
+  };
+
+  const handlerInputChange = event => {
+    if (event.target.name === 'name') {
+      setUpdatedName(event.target.value);
+    }
+    if (event.target.name === 'number') {
+      setUpdatedNumber(event.target.value);
+    }
+  };
+
   return (
-    <li>
-     <p className={css.contactText}>{name}</p>
-      <p className={css.phoneText}>{number}</p>
-        <button
-          className={css.button}
+    <>
+      <li className={css.contactItem}>
+        <p className={css.contactText}>{name}</p>
+        <p className={css.phoneText}>{number}</p>
+        <ButtonSmall
           type="button"
-          onClick={() => {
+          text="Edit"
+          id={id}
+          handler={() => {
+            setIsModalOpen(true);
+          }}
+        />
+        <ButtonSmall
+          type="button"
+          text="Delete"
+          id={id}
+          handler={() => {
             dispatch(deleteContactThunk(id));
             dispatch(getContactsThunk());
           }}
-          key={id}
-        >
-          Delete
-        </button>
-    </li>
+        />
+      </li>
+      {isModalOpen && (
+        <Modal
+          currentName={updatedName}
+          currentNumber={updatedNumber}
+          handlerInputChange={handlerInputChange}
+          handlerSubmit={handlerSubmitChangeInForm}
+          closeModal={handlerCloseModal}
+        />
+      )}
+    </>
   );
 };
 
-ListItem.propTypes = {
-  giveContact: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
+
+export default ListItem;

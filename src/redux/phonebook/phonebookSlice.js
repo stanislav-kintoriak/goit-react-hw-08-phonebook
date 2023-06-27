@@ -45,5 +45,4 @@ export const phonebookSlice = createSlice({
 });
 
 export const phonebookReducer = phonebookSlice.reducer;
-export const { updateFilter } =
-  phonebookSlice.actions;
+export const { updateFilter } = phonebookSlice.actions;

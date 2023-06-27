@@ -51,7 +51,7 @@ const FormRegister = function ({ handlerError }) {
   };
 
   return (
-    <form className='css' onSubmit={handlerSubmitForm}>
+    <form className={css.form-register} onSubmit={handlerSubmitForm}>
       <Input
         label="User Name"
         type="text"

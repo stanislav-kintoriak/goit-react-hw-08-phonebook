@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { filterSelect } from 'redux/selectors';
-import { updateFilter } from '../../redux/slice';
+import { filterSelector } from 'redux/phonebook/phonebookSelectors';
+import { updateFilter } from 'redux/phonebook/phonebookSlice';
+import Input from 'components/Input/Input';
 import css from './Filter.module.css';
 
-export const Filter = () => {
-  const filter = useSelector(filterSelect);
+const Filter = () => {
+  const filter = useSelector(filterSelector);
 
   const dispatch = useDispatch();
 
@@ -16,15 +17,16 @@ export const Filter = () => {
 
   return (
     <div className={css.filter}>
-      <label className={css.filter__label} htmlFor="filter">
-        Find contacts by name
-      </label>
-      <input
+      <Input
+        label="Find contacts by name"
         type="text"
-        id="filter"
+        name="filter"
         value={filter}
-        onChange={filterChangeHandler}
+        handler={e => filterChangeHandler(e)}
+        required={false}
       />
     </div>
   );
 };
+
+export default Filter;

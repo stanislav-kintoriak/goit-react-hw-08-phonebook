@@ -23,7 +23,7 @@ export const addNewContactThunk = createAsyncThunk(
   }
 );
 
-export const editContactThunk = createAsyncThunk(
+export const changeInContactThunk = createAsyncThunk(
   'phonebook/editContact',
   async ({ id, editedContact }) => {
     const data = await editContact({ id, editedContact });

@@ -1,88 +1,74 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { contactsSelect } from '../../redux/selectors';
-import { postContactThunk } from '../../redux/phonebookThunk';
-import css from './ContactForm.module.css';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsSelector } from 'redux/phonebook/phonebookSelectors';
+import { nanoid } from 'nanoid';
+import { addNewContactThunk } from 'redux/phonebook/phonebookThunks';
+import Input from 'components/Input/Input';
+import ButtonBig from 'components/ButtonLarge/ButtonLarge';
+import css from './ContactsForm.module.scss';
 
-export const ContactForm = () => {
+const ContactsForm = function () {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-const contacts = useSelector(contactsSelect);
-const dispatch = useDispatch();
+  const contactsList = useSelector(contactsSelector);
+  const dispatch = useDispatch();
 
+  const getExistNames = () => {
+    return contactsList.map(({ name }) => name);
+  };
 
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-
-      default:
-        return;
+  const handlerInputChange = event => {
+    if (event.target.name === 'name') {
+      setName(event.target.value);
+    }
+    if (event.target.name === 'number') {
+      setNumber(event.target.value);
     }
   };
 
-  const stateReset = () => {
-    setName('');
-    setNumber('');
+  const handlerSubmitForm = event => {
+    event.preventDefault();
+
+    if (!getExistNames().includes(name)) {
+      const newContact = {
+        id: nanoid(5),
+        name,
+        number,
+      };
+      setName('');
+      setNumber('');
+      dispatch(addNewContactThunk(newContact));
+    } else {
+      window.alert(`${name} is already in contacts.`);
+    }
   };
-
-
-  const nameInTheList = () => {
-    alert(`${name} is already there`);
-
-    setName(name);
-    setNumber(number);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (contacts.find(contact => contact.name === name)) {
-        nameInTheList();
-      } else {
-        dispatch(postContactThunk({ name, number }));
-
-    stateReset();
-  }
-}
-
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor="form-name">Name</label>
-      <input
+    <form className={css.form} onSubmit={e => handlerSubmitForm(e)}>
+      <Input
+        label="Name"
         type="text"
         name="name"
-        // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        id="form-name"
-        onChange={handleChange}
         value={name}
-        required
+        handler={handlerInputChange}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required={true}
       />
-      <label htmlFor="form-number">Number</label>
-      <input
+      <Input
+        label="Phone number"
         type="tel"
         name="number"
-        // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        id="form-number"
-        onChange={handleChange}
         value={number}
-        required
+        handler={handlerInputChange}
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required={true}
       />
-      <button type="submit" className={css.form__button}>
-        Add contact
-      </button>
+      <ButtonBig type="submit" text="Add contact" />
     </form>
   );
 };
 
+export default ContactsForm;

@@ -12,9 +12,9 @@ const UserMenu = function () {
   };
 
   return (
-    <div className={css.user-menu}>
+    <div className={css.user_menu}>
       <div className={css.user_info}>
-        <p className={css.user_text.}>Hello, {user.name}</p>
+        <p className={css.user_text}>Hello, {user.name}</p>
         <p className={css.user_text}>{user.email}</p>
       </div>
       <button

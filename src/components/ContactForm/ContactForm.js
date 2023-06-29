@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { contactsSelector } from 'redux/phonebook/phonebookSelectors';
 import { nanoid } from 'nanoid';
-import { addNewContactThunk } from 'redux/phonebook/phonebookThunks';
+import { addNewContactThunk } from 'redux/phonebook/phonebookThunk';
 import Input from 'components/Input/Input';
-import ButtonBig from 'components/ButtonLarge/ButtonLarge';
-import css from './ContactsForm.module.scss';
+import ButtonBig from 'components/ButtonBig/ButtonBig';
+import css from './ContactForm.module.scss';
 
 const ContactsForm = function () {
   const [name, setName] = useState('');

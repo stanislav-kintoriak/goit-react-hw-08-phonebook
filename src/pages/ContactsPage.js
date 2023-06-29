@@ -1,12 +1,14 @@
-import ContactsForm from 'components/ContactsForm/ContactsForm';
+import ContactForm from 'components/ContactForm/ContactForm';
+import Heading from 'components/Heading/Heading';
 import ContactsList from 'components/ContactsList/ContactsList';
 import Filter from 'components/Filter/Filter';
+
 const ContactsPage = function () {
   return (
     <div>
-      <h1>Phonebook</h1>
-      <ContactsForm />
-      <h2>Contacts</h2>
+      <Heading text="Contacts" />
+      <ContactForm />
+      <Heading tag="h2" text="Contacts List" />
       <Filter />
       <ContactsList />
     </div>

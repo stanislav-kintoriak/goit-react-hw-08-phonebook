@@ -6,7 +6,7 @@ import {
   addNewContactThunk,
   deleteContactThunk,
   editContactThunk,
-} from './phonebookThunks';
+} from './phonebookThunk';
 
 import {
   handlerGetContacts,

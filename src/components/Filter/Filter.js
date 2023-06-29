@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { filterSelector } from 'redux/phonebook/phonebookSelectors';
 import { updateFilter } from 'redux/phonebook/phonebookSlice';
 import Input from 'components/Input/Input';
-import css from './Filter.module.css';
+import css from './Filter.module.scss';
 
 const Filter = () => {
   const filter = useSelector(filterSelector);

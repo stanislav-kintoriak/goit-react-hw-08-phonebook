@@ -4,7 +4,7 @@ import {
   addContact,
   deleteContact,
   editContact,
-} from 'phonebookAPI';
+} from '../../phonebookAPI';
 
 export const getContactsThunk = createAsyncThunk(
   'phonebook/getContacts',
@@ -23,13 +23,14 @@ export const addNewContactThunk = createAsyncThunk(
   }
 );
 
-export const changeInContactThunk = createAsyncThunk(
+export const editContactThunk = createAsyncThunk(
   'phonebook/editContact',
   async ({ id, editedContact }) => {
     const data = await editContact({ id, editedContact });
     return data;
   }
 );
+
 
 export const deleteContactThunk = createAsyncThunk(
   'phonebook/deleteContact',

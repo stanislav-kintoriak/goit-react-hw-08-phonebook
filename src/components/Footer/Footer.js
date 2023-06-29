@@ -5,7 +5,7 @@ const Footer = function () {
   return (
     <footer className={css.footer}>
       <Container>
-        <p className={css.footer_thumb}>Footer content</p>
+        <p className={css.footer_thumb}></p>
       </Container>
     </footer>
   );

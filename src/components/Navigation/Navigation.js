@@ -45,7 +45,7 @@ const Navigation = function () {
               }
               to="/login"
             >
-              Log IN
+              Log in
             </NavLink>
           </li>
           <li className={css['nav-item']}>
@@ -55,7 +55,7 @@ const Navigation = function () {
               }
               to="/register"
             >
-              Sign 
+              Sign in 
             </NavLink>
           </li>
         </ul>

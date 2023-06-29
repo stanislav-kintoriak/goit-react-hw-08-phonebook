@@ -1,4 +1,4 @@
-import { Logo } from '../Logo/Logo';
+import  Logo  from '../Logo/Logo';
 import css from './Header.module.scss';
 import Navigation from 'components/Navigation/Navigation';
 import Container from 'components/Container/Container';

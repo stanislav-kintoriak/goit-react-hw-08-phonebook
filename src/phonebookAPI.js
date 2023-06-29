@@ -8,7 +8,7 @@ export const getContacts = async () => {
   return data;
 };
 
-export const postContact = async newContact => {
+export const addContact = async newContact => {
   const data = await axios.post('/contacts', newContact);
   return data;
 };

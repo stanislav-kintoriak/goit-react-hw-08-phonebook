@@ -1,0 +1,61 @@
+// --accentColor: #a9c2e7;
+// --primaryTextColor: #ffffff;
+// --secondaryTextColor: #17263b;
+// --primaryBackgroundColor: #ffffff;
+// --secondaryBackgroundColor: #17263b;
+// --mainDuration: 250ms;
+// --mainTimingFunction: cubic-bezier(0.4, 0, 0.2, 1);
+// --overlayColor: rgba(0, 0, 0, 0.8);
+// --outlineColor: #008000;
+// --warningColor: #ff4500;
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(96deg, #a9c2e7 15%, #b9c9f84d calc(20% + 25px));
+
+&:nth-child(2n) {
+    // background: linear-gradient(96deg, #a9c2e7 15%, #b9c9f84d calc(10% + 60px));
+}
+&:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+&:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+}
+
+.contactText {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 100px;
+    color: var(--secondaryTextColor);
+
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+        min-width: 285px;
+    }
+    @media screen and (min-width: 1200px) {
+        min-width: 400px;
+    }
+}
+
+.phoneText {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--secondaryTextColor);
+
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+        min-width: 285px;
+    }
+    @media screen and (min-width: 1200px) {
+        min-width: 400px;
+    }
+}

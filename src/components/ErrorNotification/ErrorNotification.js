@@ -10,7 +10,7 @@ const ErrorNotification = function ({ message }) {
 };
 
 ErrorNotification.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
 };
 
 export default ErrorNotification;

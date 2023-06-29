@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import css from './ListItem.module.css';
+import css from './ListItem.module.scss';
 import { useDispatch } from 'react-redux';
 import {
   getContactsThunk,
-  changeInContactThunk,
+  editContactThunk,
   deleteContactThunk,
 } from '../../redux/phonebook/phonebookThunk';
 import ButtonSmall from '../ButtonSmall/ButtonSmall';
 import { useState } from 'react';
-import { Modal } from '../../components/Modal';
+import  Modal  from '../../components/Modal/Modal';
 
 const ListItem = function ({ name, number, id }) {
   const [updatedName, setUpdatedName] = useState(name);
@@ -24,11 +24,11 @@ const ListItem = function ({ name, number, id }) {
     event.preventDefault();
     setIsModalOpen(false);
 
-    const changedContact = {
+    const editedContact = {
       name: updatedName,
       number: updatedNumber,
     };
-    dispatch(changeInContactThunk({ id, changedContact }));
+    dispatch(editContactThunk({ id, editedContact }));
   };
 
   const handlerInputChange = event => {
@@ -76,7 +76,7 @@ const ListItem = function ({ name, number, id }) {
   );
 };
 
-ContactItem.propTypes = {
+ListItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,

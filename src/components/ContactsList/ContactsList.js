@@ -1,15 +1,14 @@
-import { ListItem } from '../ListItem/ListItem';
+import  ListItem  from '../ListItem/ListItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getContactsThunk } from 'redux/phonebookThunk';
+import { getContactsThunk } from '../../redux/phonebook/phonebookThunk';
 import css from './ContactsList.module.scss';
 import {
   filteredContactsSelector,
   isLoadingSelector,
   errorSelector,
 } from 'redux/phonebook/phonebookSelectors';
-import { getContactsThunk } from 'redux/phonebook/phonebookThunks';
-import ErrorNotification from 'components/ErrorMessage/ErrorMessage';
+import ErrorNotification from 'components/ErrorNotification/ErrorNotification';
 import Loader from 'components/Loader/Loader';
 
 const ContactsList = function () {
@@ -24,9 +23,8 @@ const ContactsList = function () {
 
   return (
     <>
-      {isLoading && <Loader />}
       {errorMessage ? (
-        <ErrorNotification message={errorNotification} />
+        <ErrorNotification message={errorMessage} />
       ) : filteredContacts.length > 0 ? (
         <ul className={css.contactsList}>
           {filteredContacts.map(({ id, name, number }) => {
@@ -34,8 +32,9 @@ const ContactsList = function () {
           })}
         </ul>
       ) : (
-        <ErrorNotification message={'There is no any contact'} />
+        <ErrorNotification message={'There is no contacts matching your request'} />
       )}
+      {isLoading && <Loader />}
     </>
   );
 };

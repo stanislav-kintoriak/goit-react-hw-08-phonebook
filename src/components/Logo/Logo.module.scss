@@ -1,0 +1,36 @@
+.logo-link {
+    text-decoration: none;
+}
+
+
+.logo-text {
+
+    margin: 0px 0px 0px 25px;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accentColor);
+}
+
+.logo_thumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 1200px) {
+        justify-content: flex-start;
+    }
+}
+
+.logo-image {
+    width: 30px;
+    height: 30px;
+    fill: var(--accentColor);
+
+    @media screen and (min-width: 768px) {
+        width: 40px;
+        height: 40px;
+
+    }
+}

@@ -1,10 +1,10 @@
 @import-normalize; /* bring in normalize.css styles */
 
 :root {
-  --accentColor: violet;
+  --accentColor: #a9c2e7;
   --primaryTextColor: #ffffff;
-  --secondaryTextColor: #8775f1;
-  --primaryBackgroundColor: #080c11;
+  --secondaryTextColor: #17263b;
+  --primaryBackgroundColor: #ffffff;
   --secondaryBackgroundColor: #17263b;
   --mainDuration: 250ms;
   --mainTimingFunction: cubic-bezier(0.4, 0, 0.2, 1);
@@ -46,6 +46,10 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: auto;
+  margin-left:auto;
 }
 
 body {
@@ -53,7 +57,7 @@ body {
   font-style: normal;
   font-size: 14px;
   font-weight: 400;
-  color: var(--primary-text-color);
+  color: var(--secondaryTextColor);
   background-color: var(--primaryBackgroundColor);
 
   @media screen and (min-width: 768px) {

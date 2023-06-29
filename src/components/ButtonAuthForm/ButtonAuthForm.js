@@ -1,7 +1,7 @@
-import css from './ButtonBig.module.scss';
+import css from './ButtonAuthForm.module.scss';
 import PropTypes from 'prop-types';
 
-const ButtonBig = function ({ type, text, handler, children }) {
+const ButtonAuthForm = function ({ type, text, handler, children }) {
   return (
     <button className={css.button} type={type} onClick={handler}>
       {children}
@@ -10,10 +10,10 @@ const ButtonBig = function ({ type, text, handler, children }) {
   );
 };
 
-ButtonBig.propTypes = {
+ButtonAuthForm.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']).isRequired,
   text: PropTypes.string.isRequired,
   handler: PropTypes.func,
 };
 
-export default ButtonBig;
+export default ButtonAuthForm;

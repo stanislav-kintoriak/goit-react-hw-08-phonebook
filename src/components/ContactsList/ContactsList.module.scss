@@ -1,0 +1,15 @@
+.contactsList {
+    display: block;
+    min-height: 25px;
+    font-size: 14px;
+    margin: 25px 5px;
+    color: var(--secondaryTextColor);
+    list-style-type: circle;
+    border: 1px solid (var(--secondaryTextColor));
+    border-radius: 5px;
+
+    @media screen and (min-width: 1200px) {
+        // padding-left: 25px;
+        margin: 25px 5px;
+    }
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './FormRegister.module.scss';
 import Input from '../Input/Input';
-import ButtonBig from '../ButtonBig/ButtonBig';
+import ButtonAuthForm from '../ButtonAuthForm/ButtonAuthForm';
 import { useDispatch } from 'react-redux';
 import { registerUserThunk } from 'redux/auth/authThunks';
 import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@ const FormRegister = function ({ handlerError }) {
     if (event.target.name === 'password') {
       setPassword(event.target.value);
     }
-    if (event.target.name === 're-entered-password') {
+    if (event.target.name === 'entered-password-again') {
       setEnteredPasswordAgain(event.target.value);
     }
   };
@@ -51,7 +51,7 @@ const FormRegister = function ({ handlerError }) {
   };
 
   return (
-    <form className={css.form-register} onSubmit={handlerSubmitForm}>
+    <form className={css.form_register} onSubmit={handlerSubmitForm}>
       <Input
         label="User Name"
         type="text"
@@ -85,13 +85,13 @@ const FormRegister = function ({ handlerError }) {
         handler={handlerInputChange}
         required={true}
       />
-      <ButtonBig type="submit" text="Create an account" />
+      <ButtonAuthForm type="submit" text="Create an account" />
     </form>
   );
 };
 
 FormRegister.propTypes = {
-  handlerError: PropTypes.func.isRequired,
+  handlerError: PropTypes.func,
 };
 
 export default FormRegister;

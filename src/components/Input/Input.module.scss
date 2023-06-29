@@ -1,0 +1,32 @@
+.label {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-size: 22px;
+    color: var(--secondaryTextColor);
+
+}
+
+.input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    padding: 10px 10px;
+    width: 250px;
+    height: 40px;
+    font-size: 22px;
+    border: 1px solid var( --secondaryTextColor);
+    border-radius: 5px;
+    background-color: var(--primaryTextColor);
+    outline-color: var(--secondaryTextColor);
+
+    @media screen and (min-width: 768px) {
+        height: 50px;
+        font-size: 30px;
+        width: 300px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 400px;
+    }
+}

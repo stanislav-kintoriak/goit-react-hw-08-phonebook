@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './FormRegister.module.scss';
 import Input from '../Input/Input';
-import ButtonAuthForm from '../ButtonAuthForm/ButtonAuthForm';
+import ButtonCentered from '../ButtonCentered/ButtonCentered';
 import { useDispatch } from 'react-redux';
 import { registerUserThunk } from 'redux/auth/authThunks';
 import PropTypes from 'prop-types';
@@ -85,7 +85,7 @@ const FormRegister = function ({ handlerError }) {
         handler={handlerInputChange}
         required={true}
       />
-      <ButtonAuthForm type="submit" text="Create an account" />
+      <ButtonCentered type="submit" text="Create an account" />
     </form>
   );
 };

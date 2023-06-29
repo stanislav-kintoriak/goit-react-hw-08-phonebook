@@ -1,6 +1,6 @@
 import css from './Modal.module.scss';
 import Input from 'components/Input/Input';
-import ButtonBig from 'components/ButtonBig/ButtonBig';
+import ButtonCentered from 'components/ButtonCentered/ButtonCentered';
 import Heading from 'components/Heading/Heading';
 import PropTypes from 'prop-types';
 
@@ -35,8 +35,8 @@ const Modal = function ({
             required={true}
           />
           <div className={css['buttons-container']}>
-            <ButtonBig type="submit" text="Confirm" />
-            <ButtonBig type="button" text="Chancel" handler={closeModal} />
+            <ButtonCentered type="submit" text="Confirm" />
+            <ButtonCentered type="button" text="Chancel" handler={closeModal} />
           </div>
         </form>
       </div>

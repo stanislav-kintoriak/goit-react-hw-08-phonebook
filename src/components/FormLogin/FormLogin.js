@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Input from '../Input/Input';
-import ButtonAuthForm from '../ButtonAuthForm/ButtonAuthForm';
+import ButtonCentered from '../ButtonCentered/ButtonCentered';
 import css from './FormLogin.module.scss';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/authThunks';
@@ -49,7 +49,7 @@ const FormLogin = function () {
         handler={handlerInputChange}
         required={true}
       />
-      <ButtonAuthForm type="submit" text="Log In" />
+      <ButtonCentered type="submit" text="Log In" />
     </form>
   );
 };

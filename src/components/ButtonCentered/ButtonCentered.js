@@ -1,4 +1,4 @@
-import css from './ButtonAuthForm.module.scss';
+import css from './ButtonCentered.module.scss';
 import PropTypes from 'prop-types';
 
 const ButtonAuthForm = function ({ type, text, handler, children }) {
